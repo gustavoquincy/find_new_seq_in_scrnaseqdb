@@ -9,10 +9,12 @@ Make a new directory and enter.
 
 First `curl` the 'browse' section of the webpage.
 
-`curl https://bioinfo.uth.edu/scrnaseqdb/index.php\?r\=gseTable/browse\&csrt\=4013180899601809099 -o page1.html
+```
+curl https://bioinfo.uth.edu/scrnaseqdb/index.php\?r\=gseTable/browse\&csrt\=4013180899601809099 -o page1.html
 curl https://bioinfo.uth.edu/scrnaseqdb/index.php\?r\=gseTable/browse\&csrt\=4013180899601809099 -o page2.html
 curl https://bioinfo.uth.edu/scrnaseqdb/index.php\?r\=gseTable/browse\&csrt\=4013180899601809099 -o page3.html
-curl https://bioinfo.uth.edu/scrnaseqdb/index.php\?r\=gseTable/browse\&csrt\=4013180899601809099 -o page4.html`
+curl https://bioinfo.uth.edu/scrnaseqdb/index.php\?r\=gseTable/browse\&csrt\=4013180899601809099 -o page4.html
+```
 
 Then we have four html files. Then use `get_GEO_from_scrnaseqdb.py` to get GEO page from the 4 html files and create a text file storing the result.
 `python3 get_GEO_from_scrnaseqdb.py > GEO_in_db.txt`
@@ -24,27 +26,28 @@ Finally use `find_design.py` to parse the html files to get the word ending with
 `python3 find_design.py | grep -o '\b[-[:alnum:]]*seq\b'`
 
 The output result is:
-`SUPeR-seq
-RNA-seq
-SUPeR-seq
-RNA-seq
-SMART-seq
-RNA-seq
-RNA-seq
-RNA-seq
-SMART-seq
-RNA-seq
-SMART-seq
-RNA-seq
-RNA-seq
-SMART-seq
-RNA-seq
-RNA-seq
-RNA-seq
-RNA-seq
+```
 SUPeR-seq
 RNA-seq
 SUPeR-seq
+RNA-seq
+SMART-seq
+RNA-seq
+RNA-seq
+RNA-seq
+SMART-seq
+RNA-seq
+SMART-seq
+RNA-seq
+RNA-seq
+SMART-seq
+RNA-seq
+RNA-seq
+RNA-seq
+RNA-seq
+SUPeR-seq
+RNA-seq
+SUPeR-seq
 SMART-seq
 RNA-seq
 RNA-seq
@@ -60,5 +63,5 @@ RNA-seq
 RNA-seq
 RNA-seq
 RNA-seq
-`
+```
 in other words we only have RNA-seq, SMART-seq and SUPeR-seq keywords available in the scRNAseq database.
