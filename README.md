@@ -17,12 +17,15 @@ curl https://bioinfo.uth.edu/scrnaseqdb/index.php\?r\=gseTable/browse\&csrt\=401
 ```
 
 Then we have four html files. Then use `get_GEO_from_scrnaseqdb.py` to get GEO page from the 4 html files and create a text file storing the result.
+
 `python3 get_GEO_from_scrnaseqdb.py > GEO_in_db.txt`
 
 Use `wget` to recursively download the html page from the text file and store them in the `geo_dir` directory. You may need to create the `geo_dir` directory first.
+
 `wget --directory-prefix geo_dir --input-file GEO_in_db.txt`
 
 Finally use `find_design.py` to parse the html files to get the word ending with "-seq".
+
 `python3 find_design.py | grep -o '\b[-[:alnum:]]*seq\b'`
 
 The output result is:
